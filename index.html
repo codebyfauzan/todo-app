@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Todo app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+
 </head>
+
 <body>
 
-  Todo
+  <div class="container">
+    <header>
+      <h1 class="page-title">TODO</h1>
+      <button class="toggle-btn"><img src="images/icon-sun.svg" alt="light mode"></button>
+    </header>
 
-  <!-- Add dynamic number --> items left
+    <form action="" class="todo-form">
+      <div class="container-input-text">
+        <label class="todo-label-checkbox">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+        <input class="todo-input-text" type="text" placeholder="Create a new todo...">
+      </div>
+    </form>
 
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    <ul class="todo-list">
+      <li class="todo-item">Makan</li>
+      <li class="todo-item">Mandi</li>
+      <li class="todo-item">Ngoding</li>
+      <li class="todo-item">Tidur</li>
+      <li class="todo-item">Ibadah</li>
+      <li class="todo-item">Repeat</li>
+    </ul>
   </div>
 </body>
+
 </html>

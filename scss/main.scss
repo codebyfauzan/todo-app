@@ -1,0 +1,169 @@
+// Reset CSS
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Font
+body,
+input,
+label {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+// Variables
+$bg-color: hsl(235, 21%, 11%);
+$primary-color: hsl(235, 24%, 19%);
+$text-color: hsl(234, 39%, 85%);
+$hover-text-color: hsl(236, 33%, 92%);
+$completed-text-color: hsl(234, 11%, 52%);
+$active-text-color: hsl(220, 98%, 61%);
+$check-background: linear-gradient(140deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+// Body
+body {
+    &::after {
+        content: '';
+        background-image: url(../images/bg-desktop-dark.jpg);
+        background-repeat: no-repeat;
+        background-size: auto 30%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: -2;
+    }
+}
+
+.container {
+    margin: 4em 1.5em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .page-title {
+        margin-top: 0;
+        color: white;
+        letter-spacing: .4em;
+    }
+
+    .toggle-btn {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+}
+
+.todo-form {
+    margin-top: 2.4em;
+    width: 100%;
+    overflow: hidden;
+
+    .container-input-text {
+        display: flex;
+        position: relative;
+
+        .todo-label-checkbox {
+            position: absolute;
+            padding-left: 1em;
+            top: 50%;
+            margin-top: -0.75em;
+            margin-left: 1.25em;
+            cursor: pointer;
+
+            input {
+
+                opacity: 0;
+
+                &:checked~.checkmark {
+                    background: $check-background;
+                }
+
+                &:checked~.checkmark::before {
+                    background: transparent;
+                }
+
+                // Show the checkmark when checked
+                &:checked~.checkmark::after {
+                    display: block;
+                }
+            }
+
+            .checkmark {
+                position: absolute;
+                width: 1.5em;
+                height: 1.5em;
+                background: $text-color;
+                top: 0;
+                left: 0;
+                border-radius: 50%;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 1.4em;
+                    height: 1.4em;
+                    background-color: $primary-color;
+                    border-radius: 50%;
+                    top: 50%;
+                    margin-top: -0.7em;
+                    left: 50%;
+                    margin-left: -0.7em;
+                }
+
+
+                // Create the checkmark/indicator (hidden when not checked)
+                &::after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                    // Style the checkmark/indicator
+                    top: 6px;
+                    left: 10px;
+                    width: 5px;
+                    height: 10px;
+                    border: solid white;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+            }
+
+            &:hover {
+                .checkmark {
+                    background: $check-background;
+                }
+            }
+        }
+
+        .todo-input-text {
+            width: 100%;
+            background-color: $primary-color;
+            color: $text-color;
+            border: none;
+            padding: 1.25em 5em;
+            border-radius: 6px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+.todo-list {
+    list-style: none;
+    margin-top: 2em;
+}
