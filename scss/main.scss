@@ -1,3 +1,6 @@
+@use 'variables';
+@use 'mixin';
+
 // Reset CSS
 *,
 *:before,
@@ -6,16 +9,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-// Variables
-$bg-color: hsl(235, 21%, 11%);
-$primary-color: hsl(235, 24%, 19%);
-$text-color: hsl(234, 39%, 85%);
-$hover-text-color: hsl(236, 33%, 92%);
-$completed-text-color: hsl(234, 11%, 52%);
-$active-text-color: hsl(220, 98%, 61%);
-$check-background: linear-gradient(140deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-$mobile-font-size: 14px;
 
 // Font
 body,
@@ -29,48 +22,18 @@ input,
 label,
 span,
 button {
-    font-size: $mobile-font-size;
+    font-size: variables.$mobile-font-size;
 }
-
-// Mixin button
-@mixin button($button-todo-item: false) {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-        opacity: .7;
-    }
-
-    @if ($button-todo-item) {
-        color: $text-color;
-        position: absolute;
-        right: 1.25em;
-        top: 1.25em;
-        color: $completed-text-color;
-    }
-}
-
-// Mixin todo-item
-@mixin todo-item {
-    width: 100%;
-    background-color: $primary-color;
-    color: $text-color;
-    border: none;
-    padding: 1.25em 3.75em;
-    border-radius: 6px;
-}
-
 
 // Body
 body {
-    background-color: $bg-color;
+    background-color: variables.$bg-color;
 
     &::after {
         content: '';
-        background-image: url(../images/bg-desktop-dark.jpg);
+        background-image: url(../images/bg-mobile-dark.jpg);
         background-repeat: no-repeat;
-        background-size: auto 35%;
+        background-size: auto 230px;
         position: absolute;
         top: 0;
         right: 0;
@@ -81,7 +44,9 @@ body {
 }
 
 .container {
-    margin: 4em 1.5em;
+    margin: 4em auto;
+    padding: 0 1.5em;
+    max-width: 600px;
 }
 
 header {
@@ -96,94 +61,7 @@ header {
     }
 
     .toggle-btn {
-        @include button();
-    }
-}
-
-// Mixin
-@mixin list-and-input-style {
-    display: flex;
-    position: relative;
-
-    .todo-label-checkbox {
-        position: absolute;
-        padding-left: 1em;
-        top: 50%;
-        margin-top: -0.75em;
-        margin-left: 1.25em;
-        cursor: pointer;
-
-        input {
-
-            opacity: 0;
-
-            &:checked~.checkmark {
-                background: $check-background;
-            }
-
-            &:checked~.checkmark::before {
-                background: transparent;
-            }
-
-            // Show the checkmark when checked
-            &:checked~.checkmark::after {
-                display: block;
-            }
-        }
-
-        .checkmark {
-            position: absolute;
-            width: 1.5em;
-            height: 1.5em;
-            background: $completed-text-color;
-            top: 0;
-            left: 0;
-            border-radius: 50%;
-
-            &::before {
-                content: "";
-                position: absolute;
-                width: 1.35em;
-                height: 1.35em;
-                background-color: $primary-color;
-                border-radius: 50%;
-                top: 50%;
-                margin-top: -0.675em;
-                left: 50%;
-                margin-left: -0.675em;
-            }
-
-
-            // Create the checkmark/indicator (hidden when not checked)
-            &::after {
-                content: "";
-                position: absolute;
-                display: none;
-                // Style the checkmark/indicator
-                top: .35em;
-                left: 0.6em;
-                width: .35em;
-                height: 0.7em;
-                border: solid white;
-                border-width: 0 .143em .143em 0;
-                transform: rotate(45deg);
-            }
-        }
-
-        &:hover {
-            .checkmark {
-                background: $check-background;
-            }
-        }
-    }
-
-    .todo-input-text,
-    .todo-item {
-        @include todo-item();
-
-        &:focus {
-            outline: none;
-        }
+        @include mixin.button();
     }
 }
 
@@ -193,28 +71,29 @@ header {
     overflow: hidden;
 
     .container-input-text {
-        @include list-and-input-style();
+        @include mixin.list-and-input-style();
     }
 }
 
 .todo-list {
     list-style: none;
     margin-top: 1em;
+    box-shadow: 0px 5px 25px 5px rgba(0, 0, 0, 0.15);
 
     .container-todo-item {
-        @include list-and-input-style();
+        @include mixin.list-and-input-style();
 
-        > input:checked .todo-item {
+        >input:checked .todo-item {
             text-decoration: line-through;
         }
-        
+
         .todo-item {
             border-radius: 0;
-            border-bottom: 1px solid $completed-text-color;
+            border-bottom: 1px solid rgba(238, 238, 238, 0.2);
         }
 
         .delete-todo-item {
-            @include button(true);
+            @include mixin.button(true);
             background: url(../images/icon-cross.svg) no-repeat top center;
             width: 18px;
             height: 18px;
@@ -233,40 +112,77 @@ header {
             border-radius: 0 0 6px 6px;
             border-bottom: 0;
             padding: 1.25em;
-            color: $completed-text-color;
+            color: variables.$completed-text-color;
         }
 
         .clear-completed {
-            @include button(true);
+            @include mixin.button(true);
+
             &:hover {
-                color: $hover-text-color;
+                color: variables.$hover-text-color;
             }
         }
     }
 }
 
 .filter {
-    @include todo-item();
+    @include mixin.todo-item();
     margin-top: 1em;
     display: flex;
     justify-content: center;
+    padding: 17.5px 52.5px;
+    box-shadow: 0px 5px 25px 5px rgba(0, 0, 0, 0.15);
 
     button {
-        @include button();
-        color: $completed-text-color;
+        @include mixin.button();
+        color: variables.$completed-text-color;
         font-size: 1rem;
+
         &:hover {
-            color: $hover-text-color;
+            color: variables.$hover-text-color;
         }
+
         &:active {
-            color: $active-text-color;
+            color: variables.$active-text-color;
         }
+
         &:focus {
-            color: $active-text-color;
+            color: variables.$active-text-color;
         }
     }
 
-    button + button {
+    button+button {
         margin-left: 1em;
     }
+}
+
+.guide-text {
+    color: variables.$completed-text-color;
+    text-align: center;
+    margin-top: 2.5em;
+    font-size: variables.$mobile-font-size;
+}
+
+.completed {
+    color: variables.$completed-text-color !important;
+    text-decoration: line-through;
+}
+
+// Responsive
+@media (min-width: 440px) {
+    body {
+        &::after {
+            background-image: url(../images/bg-desktop-dark.jpg);
+        }
+    }
+    
+}
+
+@media (min-width: 1000px) {
+    body {
+        &::after {
+            background-size: contain;
+        }
+    }
+    
 }

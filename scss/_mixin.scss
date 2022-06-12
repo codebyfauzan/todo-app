@@ -1,0 +1,117 @@
+@use 'variables';
+
+// Mixin button
+@mixin button($button-todo-item: false) {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .7;
+    }
+
+    @if ($button-todo-item) {
+        color: variables.$text-color;
+        position: absolute;
+        right: 1.25em;
+        top: 1.25em;
+        color: variables.$completed-text-color;
+    }
+}
+
+// Mixin todo-item
+@mixin todo-item {
+    width: 100%;
+    background-color: variables.$primary-color;
+    color: variables.$text-color;
+    border: none;
+    padding: 1.25em 3.75em;
+    border-radius: 6px;
+}
+
+// Mixin
+@mixin list-and-input-style {
+    display: flex;
+    position: relative;
+
+    .todo-label-checkbox {
+        position: absolute;
+        padding-left: 1em;
+        top: 50%;
+        margin-top: -0.75em;
+        margin-left: 1.25em;
+        cursor: pointer;
+
+        input {
+
+            opacity: 0;
+
+            &:checked~.checkmark {
+                background: variables.$check-background;
+            }
+
+            &:checked~.checkmark::before {
+                background: transparent;
+            }
+
+            // Show the checkmark when checked
+            &:checked~.checkmark::after {
+                display: block;
+            }
+        }
+
+        .checkmark {
+            position: absolute;
+            width: 1.5em;
+            height: 1.5em;
+            background: variables.$completed-text-color;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 1.35em;
+                height: 1.35em;
+                background-color: variables.$primary-color;
+                border-radius: 50%;
+                top: 50%;
+                margin-top: -0.675em;
+                left: 50%;
+                margin-left: -0.675em;
+            }
+
+
+            // Create the checkmark/indicator (hidden when not checked)
+            &::after {
+                content: "";
+                position: absolute;
+                display: none;
+                // Style the checkmark/indicator
+                top: .35em;
+                left: 0.6em;
+                width: .35em;
+                height: 0.7em;
+                border: solid white;
+                border-width: 0 .143em .143em 0;
+                transform: rotate(45deg);
+            }
+        }
+
+        &:hover {
+            .checkmark {
+                background: variables.$check-background;
+            }
+        }
+    }
+
+    .todo-input-text,
+    .todo-item {
+        @include todo-item();
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
