@@ -1,7 +1,13 @@
 @use 'variables';
 
+
+// Mixin color
+// @mixin lightMode {
+    
+// }
+
 // Mixin button
-@mixin button($button-todo-item: false) {
+@mixin button($button-todo-item: false, $lightmode: false) {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -11,28 +17,40 @@
     }
 
     @if ($button-todo-item) {
-        color: variables.$text-color;
+        // color: variables.$active-text-color;
+        @if $lightmode {
+            color: variables.$completed-text-color-light;
+        } @else {
+            color: variables.$completed-text-color;
+        }
         position: absolute;
         right: 1.25em;
         top: 1.25em;
-        color: variables.$completed-text-color;
     }
 }
 
 // Mixin todo-item
-@mixin todo-item {
+@mixin todo-item($lightmode: false) {
     width: 100%;
-    background-color: variables.$primary-color;
-    color: variables.$text-color;
+    // background-color: variables.$primary-color;
+    @if $lightmode {
+        color: variables.$text-color-light;
+    } @else {
+        color: variables.$text-color;
+    }
     border: none;
     padding: 1.25em 3.75em;
-    border-radius: 6px;
 }
 
 // Mixin
-@mixin list-and-input-style {
+@mixin list-and-input-style($lightmode: false) {
     display: flex;
     position: relative;
+    @if $lightmode {
+        background-color: variables.$primary-color-light;
+    } @else {
+        background-color: variables.$primary-color;
+    }
 
     .todo-label-checkbox {
         position: absolute;
@@ -74,7 +92,11 @@
                 position: absolute;
                 width: 1.35em;
                 height: 1.35em;
-                background-color: variables.$primary-color;
+                @if $lightmode {
+                    background-color: variables.$primary-color-light;
+                } @else {
+                    background-color: variables.$primary-color;
+                }
                 border-radius: 50%;
                 top: 50%;
                 margin-top: -0.675em;
@@ -106,12 +128,30 @@
         }
     }
 
+    .todo-input-text {
+        @if $lightmode {
+            background-color: variables.$primary-color-light;
+        } @else {
+            background-color: variables.$primary-color;
+        }
+    }
+
     .todo-input-text,
     .todo-item {
-        @include todo-item();
+        @include todo-item($lightmode);
 
         &:focus {
             outline: none;
         }
+    }
+
+    .completed {
+        @if $lightmode {
+            color: variables.$completed-text-color-light;
+        } @else {
+            color: variables.$completed-text-color;
+        }
+        
+        text-decoration: line-through;
     }
 }

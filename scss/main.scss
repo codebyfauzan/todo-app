@@ -25,6 +25,50 @@ button {
     font-size: variables.$mobile-font-size;
 }
 
+// lightmode style
+body.lightmode {
+    background-color: variables.$bg-color-light;
+    &::after {
+        background-image: url(../images/bg-mobile-light.jpg);
+    }
+
+    .toggle-btn {
+        background: url(../images/icon-moon.svg) no-repeat;
+    }
+
+    .container-input-text, .container-todo-item, .container-todo-bottom {
+        @include mixin.list-and-input-style(true);
+    }
+
+    .container-todo-item {
+        .todo-item {
+            border-bottom: 1px solid #ccc;
+        }
+    }
+
+    .container-todo-bottom {
+        .todo-item {
+            padding: 1.25em;
+            color: variables.$completed-text-color-light;
+        }
+        .clear-completed {
+            @include mixin.button(true, $lightmode: true);
+    
+            &:hover {
+                color: variables.$text-color-light;
+            }
+        }
+    }
+
+    .filter, button {
+        color: variables.$text-color-light;  
+    }
+
+    .filter-mobile {
+        background-color: variables.$primary-color-light;
+    }
+}
+
 // Body
 body {
     background-color: variables.$bg-color;
@@ -42,6 +86,8 @@ body {
         z-index: -2;
     }
 }
+
+
 
 .container {
     margin: 4em auto;
@@ -62,6 +108,9 @@ header {
 
     .toggle-btn {
         @include mixin.button();
+        background: url(../images/icon-sun.svg) no-repeat;
+        width: 26px;
+        height: 26px;
     }
 }
 
@@ -69,6 +118,7 @@ header {
     margin-top: 2.4em;
     width: 100%;
     overflow: hidden;
+    border-radius: 6px;
 
     .container-input-text {
         @include mixin.list-and-input-style();
@@ -79,17 +129,21 @@ header {
     list-style: none;
     margin-top: 1em;
     box-shadow: 0px 5px 25px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
 
     .container-todo-item {
         @include mixin.list-and-input-style();
+        
 
         >input:checked .todo-item {
             text-decoration: line-through;
         }
 
         .todo-item {
-            border-radius: 0;
-            border-bottom: 1px solid rgba(238, 238, 238, 0.2);
+            border-bottom: 1px solid rgba(212, 212, 212, 0.2);
+            user-select: none;
+            min-height: 51px;
         }
 
         .delete-todo-item {
@@ -100,27 +154,30 @@ header {
         }
     }
 
-    .container-todo-item:first-child {
-        .todo-item {
-            border-radius: 6px 6px 0 0;
-        }
+    .container-todo-item[draggable='true'] {
+        cursor: move;
     }
 
-    .container-todo-item:last-child {
+    .container-todo-item.dragging {
+        opacity: .5;
+    }
+}
 
-        .todo-item {
-            border-radius: 0 0 6px 6px;
-            border-bottom: 0;
-            padding: 1.25em;
-            color: variables.$completed-text-color;
-        }
+.container-todo-bottom {
+    @include mixin.list-and-input-style();
+    position: relative;
+    border-radius: 0 0 6px 6px;
+    .todo-item {
+        border-bottom: 0;
+        padding: 1.25em;
+        color: variables.$completed-text-color;
+    }
 
-        .clear-completed {
-            @include mixin.button(true);
+    .clear-completed {
+        @include mixin.button(true, $lightmode: false);
 
-            &:hover {
-                color: variables.$hover-text-color;
-            }
+        &:hover {
+            color: variables.$hover-text-color;
         }
     }
 }
@@ -142,13 +199,13 @@ header {
             color: variables.$hover-text-color;
         }
 
-        &:active {
-            color: variables.$active-text-color;
-        }
-
         &:focus {
             color: variables.$active-text-color;
         }
+    }
+
+    button.actived-btn, button.actived-mobile-btn {
+        color: variables.$active-text-color;
     }
 
     button+button {
@@ -163,9 +220,12 @@ header {
     font-size: variables.$mobile-font-size;
 }
 
-.completed {
-    color: variables.$completed-text-color !important;
-    text-decoration: line-through;
+.filter-mobile {
+    background-color: variables.$primary-color;
+}
+
+.filter-desktop {
+   display: none;
 }
 
 // Responsive
@@ -173,6 +233,33 @@ header {
     body {
         &::after {
             background-image: url(../images/bg-desktop-dark.jpg);
+        }
+    }
+
+    body.lightmode {
+        &::after {
+            background-image: url(../images/bg-desktop-light.jpg);
+        }
+    }
+    
+}
+
+@media (min-width: 640px) {
+    .filter-mobile {
+        display: none;
+    }
+
+    .filter-desktop {
+        display: flex;
+        position: absolute;
+        margin: 0 auto;
+        top: 0;
+        left: 50%;
+        width: 200px;
+        transform: translateX(-100px);
+        box-shadow: none;
+        button {
+            font-size: variables.$mobile-font-size;
         }
     }
     

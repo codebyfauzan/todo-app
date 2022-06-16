@@ -24,13 +24,13 @@
   <div class="container">
     <header>
       <h1 class="page-title">TODO</h1>
-      <button class="toggle-btn"><img src="images/icon-sun.svg" alt="light mode"></button>
+      <button class="toggle-btn"></button>
     </header>
 
     <form class="todo-form" id="todo-form">
       <div class="container-input-text">
         <label class="todo-label-checkbox">
-          <input id="checkbox" type="checkbox">
+          <input class="checkbox" id="checkbox" type="checkbox">
           <span class="checkmark"></span>
         </label>
         <input class="todo-input-text" type="text" placeholder="Create a new todo...">
@@ -38,62 +38,68 @@
     </form>
 
     <ul class="todo-list" id="todo-list">
-      <li class="container-todo-item">
+      <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input type="checkbox" checked="checked">
+          <input class="checkbox" type="checkbox" checked="checked">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item completed">Complete online javascript course</span>
         <button class="delete-todo-item"></button>
       </li>
-      <li class="container-todo-item">
+      <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input type="checkbox" checked="checked">
+          <input class="checkbox" type="checkbox" checked="checked">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item completed">Jogging</span>
         <button class="delete-todo-item"></button>
       </li>
-      <li class="container-todo-item">
+      <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input type="checkbox">
+          <input class="checkbox" type="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Read a book</span>
         <button class="delete-todo-item"></button>
       </li>
-      <li class="container-todo-item">
+      <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input type="checkbox">
+          <input class="checkbox" type="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Eat healthy food</span>
         <button class="delete-todo-item"></button>
       </li>
-      <li class="container-todo-item">
+      <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input type="checkbox">
+          <input class="checkbox" type="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Pray</span>
         <button class="delete-todo-item"></button>
       </li>
-      <li class="container-todo-item">
+      <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input type="checkbox">
+          <input class="checkbox" type="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Sleeep</span>
         <button class="delete-todo-item"></button>
       </li>
-      <li class="container-todo-item">
-        <span class="todo-item" id="items-left">5 items left</span>
-        <button class="clear-completed" id="clear-completed">Clear Completed</button>
-      </li>
     </ul>
+    <div class="container-todo-bottom">
+      <span class="todo-item" id="items-left">5 items left</span>
+      <div class="filter filter-desktop">
+        <button class="all-btn filter-btn actived-btn" id="all-btn">All</button>
+        <button class="active-btn filter-btn" id="active-btn">Active</button>
+        <button class="completed-btn filter-btn" id="completed-btn">Completed</button>
+      </div>
+      <button class="clear-completed" id="clear-completed">Clear Completed</button>
+    </div>
 
-    <div class="filter">
-      <button class="all-btn filter-btn" id="all-btn">All</button>
+
+    <div class="filter filter-mobile">
+      <button class="all-btn filter-btn actived-mobile-btn" id="all-btn">All</button>
       <button class="active-btn filter-btn" id="active-btn">Active</button>
       <button class="completed-btn filter-btn" id="completed-btn">Completed</button>
     </div>

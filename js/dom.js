@@ -17,6 +17,7 @@ function makeTodo(text) {
     // create input checkbox
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
+    checkbox.classList.add('checkbox');
 
     // create checkmark
     const checkmark = document.createElement('span');
@@ -41,8 +42,23 @@ function makeTodo(text) {
     deleteButton.classList.add('delete-todo-item');
 
     // create container todo item
-    const containerTodoItem = document.createElement('container-todo-item');
+    const containerTodoItem = document.createElement('li');
     containerTodoItem.classList.add('container-todo-item');
+    containerTodoItem.setAttribute('draggable', 'true');
+    // drag event
+    containerTodoItem.addEventListener('dragstart', () => {
+        containerTodoItem.classList.add('dragging');
+    });
+    containerTodoItem.addEventListener('dragend', () => {
+        containerTodoItem.classList.remove('dragging');
+    });
+    containerTodoItem.addEventListener('touchstart', () => {
+        containerTodoItem.classList.add('dragging');
+    });
+    containerTodoItem.addEventListener('touchend', () => {
+        containerTodoItem.classList.remove('dragging');
+    });
+    
 
     const isTodoChecked = document.getElementById('checkbox').checked;
     if (isTodoChecked) {
@@ -57,3 +73,5 @@ function makeTodo(text) {
 
     return containerTodoItem;
 }
+
+// Drag Function
