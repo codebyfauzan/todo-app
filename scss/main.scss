@@ -25,6 +25,10 @@ button {
     font-size: variables.$mobile-font-size;
 }
 
+span {
+    display: inline-block;
+}
+
 // lightmode style
 body.lightmode {
     background-color: variables.$bg-color-light;
@@ -49,7 +53,8 @@ body.lightmode {
     .container-todo-bottom {
         .todo-item {
             padding: 1.25em;
-            color: variables.$completed-text-color-light;
+            color: variables.$text-color-light-soft;
+            font-weight: 400;
         }
         .clear-completed {
             @include mixin.button(true, $lightmode: true);
@@ -61,7 +66,15 @@ body.lightmode {
     }
 
     .filter, button {
-        color: variables.$text-color-light;  
+        color: variables.$text-color-light-soft; 
+    }
+
+    .filter {
+        button {
+            &:hover {
+                color: variables.$text-color-light;
+            }
+        }
     }
 
     .filter-mobile {
@@ -154,9 +167,9 @@ header {
         }
     }
 
-    .container-todo-item[draggable='true'] {
-        cursor: move;
-    }
+    // .container-todo-item[draggable='true'] {
+    //     cursor: move;
+    // }
 
     .container-todo-item.dragging {
         opacity: .5;
@@ -171,6 +184,7 @@ header {
         border-bottom: 0;
         padding: 1.25em;
         color: variables.$completed-text-color;
+        font-weight: 400;
     }
 
     .clear-completed {
@@ -206,6 +220,7 @@ header {
 
     button.actived-btn, button.actived-mobile-btn {
         color: variables.$active-text-color;
+        font-weight: 700;
     }
 
     button+button {
@@ -222,6 +237,7 @@ header {
 
 .filter-mobile {
     background-color: variables.$primary-color;
+    border-radius: 6px;
 }
 
 .filter-desktop {
@@ -245,6 +261,18 @@ header {
 }
 
 @media (min-width: 640px) {
+
+    .container-todo-item {
+        .delete-todo-item {
+            visibility: hidden;
+        }
+        &:hover {
+            .delete-todo-item {
+                visibility: visible;
+            }
+        }
+    }
+
     .filter-mobile {
         display: none;
     }

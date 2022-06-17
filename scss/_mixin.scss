@@ -1,11 +1,6 @@
 @use 'variables';
 
 
-// Mixin color
-// @mixin lightMode {
-    
-// }
-
 // Mixin button
 @mixin button($button-todo-item: false, $lightmode: false) {
     background-color: transparent;
@@ -19,7 +14,7 @@
     @if ($button-todo-item) {
         // color: variables.$active-text-color;
         @if $lightmode {
-            color: variables.$completed-text-color-light;
+            color: variables.$text-color-light-soft;
         } @else {
             color: variables.$completed-text-color;
         }
@@ -32,7 +27,7 @@
 // Mixin todo-item
 @mixin todo-item($lightmode: false) {
     width: 100%;
-    // background-color: variables.$primary-color;
+    font-weight: 700;
     @if $lightmode {
         color: variables.$text-color-light;
     } @else {
@@ -90,8 +85,9 @@
             &::before {
                 content: "";
                 position: absolute;
-                width: 1.35em;
-                height: 1.35em;
+                $size: calc(1.5em - 2px);
+                width: $size;
+                height: $size;
                 @if $lightmode {
                     background-color: variables.$primary-color-light;
                 } @else {
@@ -99,9 +95,9 @@
                 }
                 border-radius: 50%;
                 top: 50%;
-                margin-top: -0.675em;
+                margin-top: calc($size/2*-1);
                 left: 50%;
-                margin-left: -0.675em;
+                margin-left: calc($size/2*-1);
             }
 
 

@@ -20,6 +20,10 @@ button {
   font-size: 14px;
 }
 
+span {
+  display: inline-block;
+}
+
 body.lightmode {
   background-color: hsl(236deg, 33%, 92%);
 }
@@ -66,14 +70,14 @@ body.lightmode .container-input-text .todo-label-checkbox .checkmark, body.light
 body.lightmode .container-input-text .todo-label-checkbox .checkmark::before, body.lightmode .container-todo-item .todo-label-checkbox .checkmark::before, body.lightmode .container-todo-bottom .todo-label-checkbox .checkmark::before {
   content: "";
   position: absolute;
-  width: 1.35em;
-  height: 1.35em;
+  width: calc(1.5em - 2px);
+  height: calc(1.5em - 2px);
   background-color: hsl(0deg, 0%, 98%);
   border-radius: 50%;
   top: 50%;
-  margin-top: -0.675em;
+  margin-top: calc((1.5em - 2px) / 2 * -1);
   left: 50%;
-  margin-left: -0.675em;
+  margin-left: calc((1.5em - 2px) / 2 * -1);
 }
 body.lightmode .container-input-text .todo-label-checkbox .checkmark::after, body.lightmode .container-todo-item .todo-label-checkbox .checkmark::after, body.lightmode .container-todo-bottom .todo-label-checkbox .checkmark::after {
   content: "";
@@ -98,7 +102,8 @@ body.lightmode .container-input-text .todo-item, body.lightmode .container-todo-
 body.lightmode .container-todo-item .todo-item, body.lightmode .container-todo-bottom .todo-input-text,
 body.lightmode .container-todo-bottom .todo-item {
   width: 100%;
-  color: hsl(235deg, 19%, 35%);
+  font-weight: 700;
+  color: hsl(237deg, 14%, 26%);
   border: none;
   padding: 1.25em 3.75em;
 }
@@ -117,13 +122,14 @@ body.lightmode .container-todo-item .todo-item {
 }
 body.lightmode .container-todo-bottom .todo-item {
   padding: 1.25em;
-  color: hsl(233deg, 11%, 84%);
+  color: hsl(235deg, 19%, 35%);
+  font-weight: 400;
 }
 body.lightmode .container-todo-bottom .clear-completed {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: hsl(233deg, 11%, 84%);
+  color: hsl(235deg, 19%, 35%);
   position: absolute;
   right: 1.25em;
   top: 1.25em;
@@ -132,10 +138,13 @@ body.lightmode .container-todo-bottom .clear-completed:hover {
   opacity: 0.7;
 }
 body.lightmode .container-todo-bottom .clear-completed:hover {
-  color: hsl(235deg, 19%, 35%);
+  color: hsl(237deg, 14%, 26%);
 }
 body.lightmode .filter, body.lightmode button {
   color: hsl(235deg, 19%, 35%);
+}
+body.lightmode .filter button:hover {
+  color: hsl(237deg, 14%, 26%);
 }
 body.lightmode .filter-mobile {
   background-color: hsl(0deg, 0%, 98%);
@@ -228,14 +237,14 @@ header .toggle-btn:hover {
 .todo-form .container-input-text .todo-label-checkbox .checkmark::before {
   content: "";
   position: absolute;
-  width: 1.35em;
-  height: 1.35em;
+  width: calc(1.5em - 2px);
+  height: calc(1.5em - 2px);
   background-color: hsl(235deg, 24%, 19%);
   border-radius: 50%;
   top: 50%;
-  margin-top: -0.675em;
+  margin-top: calc((1.5em - 2px) / 2 * -1);
   left: 50%;
-  margin-left: -0.675em;
+  margin-left: calc((1.5em - 2px) / 2 * -1);
 }
 .todo-form .container-input-text .todo-label-checkbox .checkmark::after {
   content: "";
@@ -258,6 +267,7 @@ header .toggle-btn:hover {
 .todo-form .container-input-text .todo-input-text,
 .todo-form .container-input-text .todo-item {
   width: 100%;
+  font-weight: 700;
   color: hsl(234deg, 39%, 85%);
   border: none;
   padding: 1.25em 3.75em;
@@ -315,14 +325,14 @@ header .toggle-btn:hover {
 .todo-list .container-todo-item .todo-label-checkbox .checkmark::before {
   content: "";
   position: absolute;
-  width: 1.35em;
-  height: 1.35em;
+  width: calc(1.5em - 2px);
+  height: calc(1.5em - 2px);
   background-color: hsl(235deg, 24%, 19%);
   border-radius: 50%;
   top: 50%;
-  margin-top: -0.675em;
+  margin-top: calc((1.5em - 2px) / 2 * -1);
   left: 50%;
-  margin-left: -0.675em;
+  margin-left: calc((1.5em - 2px) / 2 * -1);
 }
 .todo-list .container-todo-item .todo-label-checkbox .checkmark::after {
   content: "";
@@ -345,6 +355,7 @@ header .toggle-btn:hover {
 .todo-list .container-todo-item .todo-input-text,
 .todo-list .container-todo-item .todo-item {
   width: 100%;
+  font-weight: 700;
   color: hsl(234deg, 39%, 85%);
   border: none;
   padding: 1.25em 3.75em;
@@ -379,9 +390,6 @@ header .toggle-btn:hover {
 }
 .todo-list .container-todo-item .delete-todo-item:hover {
   opacity: 0.7;
-}
-.todo-list .container-todo-item[draggable=true] {
-  cursor: move;
 }
 .todo-list .container-todo-item.dragging {
   opacity: 0.5;
@@ -426,14 +434,14 @@ header .toggle-btn:hover {
 .container-todo-bottom .todo-label-checkbox .checkmark::before {
   content: "";
   position: absolute;
-  width: 1.35em;
-  height: 1.35em;
+  width: calc(1.5em - 2px);
+  height: calc(1.5em - 2px);
   background-color: hsl(235deg, 24%, 19%);
   border-radius: 50%;
   top: 50%;
-  margin-top: -0.675em;
+  margin-top: calc((1.5em - 2px) / 2 * -1);
   left: 50%;
-  margin-left: -0.675em;
+  margin-left: calc((1.5em - 2px) / 2 * -1);
 }
 .container-todo-bottom .todo-label-checkbox .checkmark::after {
   content: "";
@@ -456,6 +464,7 @@ header .toggle-btn:hover {
 .container-todo-bottom .todo-input-text,
 .container-todo-bottom .todo-item {
   width: 100%;
+  font-weight: 700;
   color: hsl(234deg, 39%, 85%);
   border: none;
   padding: 1.25em 3.75em;
@@ -472,6 +481,7 @@ header .toggle-btn:hover {
   border-bottom: 0;
   padding: 1.25em;
   color: hsl(234deg, 11%, 52%);
+  font-weight: 400;
 }
 .container-todo-bottom .clear-completed {
   background-color: transparent;
@@ -491,6 +501,7 @@ header .toggle-btn:hover {
 
 .filter {
   width: 100%;
+  font-weight: 700;
   color: hsl(234deg, 39%, 85%);
   border: none;
   padding: 1.25em 3.75em;
@@ -518,6 +529,7 @@ header .toggle-btn:hover {
 }
 .filter button.actived-btn, .filter button.actived-mobile-btn {
   color: hsl(220deg, 98%, 61%);
+  font-weight: 700;
 }
 .filter button + button {
   margin-left: 1em;
@@ -532,6 +544,7 @@ header .toggle-btn:hover {
 
 .filter-mobile {
   background-color: hsl(235deg, 24%, 19%);
+  border-radius: 6px;
 }
 
 .filter-desktop {
@@ -548,6 +561,13 @@ header .toggle-btn:hover {
   }
 }
 @media (min-width: 640px) {
+  .container-todo-item .delete-todo-item {
+    visibility: hidden;
+  }
+  .container-todo-item:hover .delete-todo-item {
+    visibility: visible;
+  }
+
   .filter-mobile {
     display: none;
   }
