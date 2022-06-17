@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" role="main">
 
 <head>
   <meta charset="UTF-8">
@@ -22,14 +22,14 @@
 <body>
 
   <div class="container">
-    <header role="banner">
+    <header>
       <h1 class="page-title">TODO</h1>
       <button class="toggle-btn" aria-label="toggle button"></button>
     </header>
 
-    <form class="todo-form" id="todo-form" role="form">
+    <form class="todo-form" id="todo-form">
       <div class="container-input-text">
-        <label class="todo-label-checkbox">
+        <label class="todo-label-checkbox" for="checkbox">
           <input class="checkbox" id="checkbox" type="checkbox">
           <span class="checkmark"></span>
         </label>
@@ -40,7 +40,7 @@
     <ul class="todo-list" id="todo-list">
       <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input class="checkbox" type="checkbox" checked="checked">
+          <input class="checkbox" type="checkbox" aria-label="checkbox" checked="checked">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item completed">Complete online Javascript course</span>
@@ -48,7 +48,7 @@
       </li>
       <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input class="checkbox" type="checkbox">
+          <input class="checkbox" type="checkbox" aria-label="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Jog around the park 3x</span>
@@ -56,7 +56,7 @@
       </li>
       <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input class="checkbox" type="checkbox">
+          <input class="checkbox" type="checkbox" aria-label="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">10 minutes meditation</span>
@@ -64,7 +64,7 @@
       </li>
       <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input class="checkbox" type="checkbox">
+          <input class="checkbox" type="checkbox" aria-label="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Read for 1 hour</span>
@@ -72,7 +72,7 @@
       </li>
       <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input class="checkbox" type="checkbox">
+          <input class="checkbox" type="checkbox" aria-label="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Pick up groceries</span>
@@ -80,7 +80,7 @@
       </li>
       <li class="container-todo-item" draggable="true">
         <label class="todo-label-checkbox">
-          <input class="checkbox" type="checkbox">
+          <input class="checkbox" type="checkbox" aria-label="checkbox">
           <span class="checkmark"></span>
         </label>
         <span class="todo-item active">Complete Todo App on Frontend Mentor</span>
