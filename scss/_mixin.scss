@@ -12,7 +12,6 @@
     }
 
     @if ($button-todo-item) {
-        // color: variables.$active-text-color;
         @if $lightmode {
             color: variables.$text-color-light-soft;
         } @else {
