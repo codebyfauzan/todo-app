@@ -40,7 +40,6 @@ body.lightmode .container-input-text, body.lightmode .container-todo-item, body.
 }
 body.lightmode .container-input-text .todo-label-checkbox, body.lightmode .container-todo-item .todo-label-checkbox, body.lightmode .container-todo-bottom .todo-label-checkbox {
   position: absolute;
-  padding-left: 1em;
   top: 50%;
   margin-top: -0.75em;
   margin-left: 1.25em;
@@ -211,7 +210,6 @@ header .toggle-btn:hover {
 }
 .todo-form .container-input-text .todo-label-checkbox {
   position: absolute;
-  padding-left: 1em;
   top: 50%;
   margin-top: -0.75em;
   margin-left: 1.25em;
@@ -299,7 +297,6 @@ header .toggle-btn:hover {
 }
 .todo-list .container-todo-item .todo-label-checkbox {
   position: absolute;
-  padding-left: 1em;
   top: 50%;
   margin-top: -0.75em;
   margin-left: 1.25em;
@@ -408,7 +405,6 @@ header .toggle-btn:hover {
 }
 .container-todo-bottom .todo-label-checkbox {
   position: absolute;
-  padding-left: 1em;
   top: 50%;
   margin-top: -0.75em;
   margin-left: 1.25em;
