@@ -143,6 +143,10 @@ body.lightmode .container-todo-bottom .clear-completed:hover {
 body.lightmode .filter, body.lightmode button {
   color: hsl(235deg, 19%, 35%);
 }
+body.lightmode .filter button.actived-btn, body.lightmode .filter button.actived-mobile-btn {
+  color: hsl(220deg, 98%, 61%) !important;
+  font-weight: 700;
+}
 body.lightmode .filter button:hover {
   color: hsl(237deg, 14%, 26%);
 }
@@ -561,13 +565,6 @@ header .toggle-btn:hover {
   }
 }
 @media (min-width: 640px) {
-  .container-todo-item .delete-todo-item {
-    visibility: hidden;
-  }
-  .container-todo-item:hover .delete-todo-item {
-    visibility: visible;
-  }
-
   .filter-mobile {
     display: none;
   }
@@ -589,6 +586,14 @@ header .toggle-btn:hover {
 @media (min-width: 1000px) {
   body::after {
     background-size: contain;
+  }
+}
+@media (min-width: 1200px) {
+  .container-todo-item .delete-todo-item {
+    visibility: hidden;
+  }
+  .container-todo-item:hover .delete-todo-item {
+    visibility: visible;
   }
 }
 

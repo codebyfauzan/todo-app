@@ -70,6 +70,10 @@ body.lightmode {
     }
 
     .filter {
+        button.actived-btn, button.actived-mobile-btn {
+            color: variables.$active-text-color !important;
+            font-weight: 700;
+        }
         button {
             &:hover {
                 color: variables.$text-color-light;
@@ -167,10 +171,6 @@ header {
         }
     }
 
-    // .container-todo-item[draggable='true'] {
-    //     cursor: move;
-    // }
-
     .container-todo-item.dragging {
         opacity: .5;
     }
@@ -262,17 +262,6 @@ header {
 
 @media (min-width: 640px) {
 
-    .container-todo-item {
-        .delete-todo-item {
-            visibility: hidden;
-        }
-        &:hover {
-            .delete-todo-item {
-                visibility: visible;
-            }
-        }
-    }
-
     .filter-mobile {
         display: none;
     }
@@ -301,3 +290,18 @@ header {
     }
     
 }
+
+@media (min-width: 1200px) {
+    .container-todo-item {
+        .delete-todo-item {
+            visibility: hidden;
+        }
+        &:hover {
+            .delete-todo-item {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+
