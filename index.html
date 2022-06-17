@@ -22,12 +22,12 @@
 <body>
 
   <div class="container">
-    <header>
+    <header role="banner">
       <h1 class="page-title">TODO</h1>
-      <button class="toggle-btn"></button>
+      <button class="toggle-btn" aria-label="toggle button"></button>
     </header>
 
-    <form class="todo-form" id="todo-form">
+    <form class="todo-form" id="todo-form" role="form">
       <div class="container-input-text">
         <label class="todo-label-checkbox">
           <input class="checkbox" id="checkbox" type="checkbox">
@@ -90,18 +90,18 @@
     <div class="container-todo-bottom">
       <span class="todo-item" id="items-left">5 items left</span>
       <div class="filter filter-desktop">
-        <button class="all-btn filter-btn actived-btn" id="all-btn">All</button>
-        <button class="active-btn filter-btn" id="active-btn">Active</button>
-        <button class="completed-btn filter-btn" id="completed-btn">Completed</button>
+        <button class="all-btn filter-btn actived-btn">All</button>
+        <button class="active-btn filter-btn">Active</button>
+        <button class="completed-btn filter-btn">Completed</button>
       </div>
       <button class="clear-completed" id="clear-completed">Clear Completed</button>
     </div>
 
 
     <div class="filter filter-mobile">
-      <button class="all-btn filter-btn actived-mobile-btn" id="all-btn">All</button>
-      <button class="active-btn filter-btn" id="active-btn">Active</button>
-      <button class="completed-btn filter-btn" id="completed-btn">Completed</button>
+      <button class="all-btn filter-btn actived-mobile-btn">All</button>
+      <button class="active-btn filter-btn">Active</button>
+      <button class="completed-btn filter-btn">Completed</button>
     </div>
 
     <p class="guide-text">Drag and drop to reorder list</p>

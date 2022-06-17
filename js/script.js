@@ -165,15 +165,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const activeTodos = document.getElementsByClassName('active');
     // Filter todos
     for (let filterButton of filterButtons) {
-        filterButton.addEventListener('click', function (element) {
-            if (element.target.id == 'completed-btn') {
+        filterButton.addEventListener('click', function (event) {
+            console.log(event.target.classList.contains('completed-btn'));
+            if (event.target.classList.contains('completed-btn')) {
                 for (activeTodo of activeTodos) {
                     activeTodo.parentElement.style.display = 'none';
                 }
                 for (completedTodo of completedTodos) {
                     completedTodo.parentElement.style.display = 'flex';
                 }
-            } else if (element.target.id == 'active-btn') {
+            } else if (event.target.classList.contains('active-btn')) {
                 for (completedTodo of completedTodos) {
                     completedTodo.parentElement.style.display = 'none';
                 }

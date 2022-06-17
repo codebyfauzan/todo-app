@@ -52,7 +52,7 @@ Users should be able to:
 
 ### Continued development
 
-I planned to store the todo data to local storage, so the will not be gone after reload.
+I planned to store the todo data to local storage, so the data will not be gone after reload.
 
 ## Author
 
