@@ -13,8 +13,6 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Continued development](#continued-development)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -37,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Todo App solution](https://your-solution-url.com)
+- Solution URL: [Todo App solution](https://www.frontendmentor.io/solutions/todo-app-using-sass-and-vanilla-javascript-7oyrMnu0nK)
 - Live Site URL: [Todo App Live Site](https://todo-app-codebyfauzan.netlify.app/)
 
 ## My process
